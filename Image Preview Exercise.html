@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Preview (upDate & undo)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #0078d7;
+      color: white;
+      padding: 20px;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    footer {
+      background: #eee;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    #image {
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      width: 500px;
+      height: 300px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 18px;
+      border-radius: 10px;
+    }
+
+    .preview {
+      width: 100px;
+      height: 70px;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      object-fit: cover;
+      transition: transform 0.2s;
+    }
+
+    .preview:hover {
+      transform: scale(1.1);
+      border: 2px solid #0078d7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Image Preview Exercise</h1>
+    <p>Hover over an image to preview it above!</p>
+  </header>
+
+  <main>
+    <div id="image">
+      Hover over an image below to display here.
+    </div>
+
+    <!-- Example thumbnails -->
+    <img class="preview" src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg" alt="Beautiful Lake" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://images.pexels.com/photos/147040/pexels-photo-147040.jpeg" alt="Snowy Mountain" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg" alt="Sunny Beach" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://images.pexels.com/photos/34950/pexels-photo.jpg" alt="Green Forest" onmouseover="upDate(this)" onmouseout="undo()">
+  </main>
+
+  <footer>
+    <p>Images from <a href="https://www.pexels.com" target="_blank">Pexels</a> · © 2025 Image Preview Project</p>
+  </footer>
+
+  <script>
+    function upDate(previewPic) {
+      console.log("Hovering over:", previewPic.alt);
+      console.log("Image source:", previewPic.src);
+
+      const imageDiv = document.getElementById("image");
+      imageDiv.style.backgroundImage = `url(${previewPic.src})`;
+      imageDiv.innerText = previewPic.alt;
+    }
+
+    function undo() {
+      console.log("Mouse out — restoring original text and background.");
+
+      const imageDiv = document.getElementById("image");
+      imageDiv.style.backgroundImage = "url('')";
+      imageDiv.innerText = "Hover over an image below to display here.";
+    }
+  </script>
+</body>
+</html>
