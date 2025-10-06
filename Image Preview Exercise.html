@@ -1,129 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Preview (upDate & undo)</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #0078d7;
-      color: white;
-      padding: 20px;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    footer {
-      background: #eee;
-      padding: 10px;
-      margin-top: 20px;
-    }
-
-    #image {
-      background-color: #ccc;
-      background-size: cover;
-      background-position: center;
-      width: 500px;
-      height: 300px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
-      font-size: 18px;
-      border-radius: 10px;
-    }
-
-    .preview {
-      width: 100px;
-      height: 70px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      object-fit: cover;
-      transition: transform 0.2s;
-    }
-
-    .preview:hover {
-      transform: scale(1.1);
-      border: 2px solid #0078d7;
-    }
-
-    @media (min-width: 600px) {
-      #image {
-        width: 80%;
-        height: 350px;
-      }
-      .preview {
-        width: 150px;
-        height: 100px;
-      }
-    }
-
-    @media (min-width: 900px) {
-      main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      #image {
-        width: 60%;
-        height: 400px;
-      }
-      .preview {
-        width: 180px;
-        height: 120px;
-        margin: 15px;
-      }
-      footer {
-        font-size: 18px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Image Preview Exercise</h1>
-    <p>Hover over an image to preview it above!</p>
-  </header>
+    <header>
+        <nav>
+            <h1>My Portfolio</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <div id="image">
-      Hover over an image below to display here.
-    </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm a software engineering student at FPT University. I’m passionate about web development, coding, and learning new technologies.</p>
+    </section>
 
-    <img class="preview" src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg" alt="Beautiful Lake" onmouseover="upDate(this)" onmouseout="undo()">
-    <img class="preview" src="https://images.pexels.com/photos/147040/pexels-photo-147040.jpeg" alt="Snowy Mountain" onmouseover="upDate(this)" onmouseout="undo()">
-    <img class="preview" src="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg" alt="Sunny Beach" onmouseover="upDate(this)" onmouseout="undo()">
-    <img class="preview" src="https://images.pexels.com/photos/34950/pexels-photo.jpg" alt="Green Forest" onmouseover="upDate(this)" onmouseout="undo()">
-  </main>
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project">
+            <img src="project1.jpg" alt="Project 1 Screenshot">
+            <h3>Personal Portfolio Website</h3>
+            <p>A responsive personal website built using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="project">
+            <img src="project2.jpg" alt="Project 2 Screenshot">
+            <h3>To-Do List App</h3>
+            <p>A simple JavaScript-based to-do list app with local storage support.</p>
+        </div>
+    </section>
 
-  <footer>
-    <p>Images from <a href="https://www.pexels.com" target="_blank">Pexels</a> · © 2025 Image Preview Project</p>
-  </footer>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-  <script>
-    function upDate(previewPic) {
-      const imageDiv = document.getElementById("image");
-      imageDiv.style.backgroundImage = `url(${previewPic.src})`;
-      imageDiv.innerText = previewPic.alt;
-    }
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-    function undo() {
-      const imageDiv = document.getElementById("image");
-      imageDiv.style.backgroundImage = "url('')";
-      imageDiv.innerText = "Hover over an image below to display here.";
-    }
-  </script>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 My Portfolio | All Rights Reserved</p>
+    </footer>
 </body>
 </html>
